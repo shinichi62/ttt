@@ -766,6 +766,7 @@
 				C99B99701F15774500A0422B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99B99721F15774500A0422B /* Build configuration list for PBXNativeTarget "ttt WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -774,6 +775,7 @@
 				C99B99741F15774500A0422B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99B99761F15774500A0422B /* Build configuration list for PBXNativeTarget "ttt" */ = {
 			isa = XCConfigurationList;
@@ -782,6 +784,7 @@
 				C99B99781F15774500A0422B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99B99791F15774500A0422B /* Build configuration list for PBXNativeTarget "tttTests" */ = {
 			isa = XCConfigurationList;
@@ -790,6 +793,7 @@
 				C99B997B1F15774500A0422B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99B997C1F15774500A0422B /* Build configuration list for PBXNativeTarget "tttUITests" */ = {
 			isa = XCConfigurationList;
@@ -798,6 +802,7 @@
 				C99B997E1F15774500A0422B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

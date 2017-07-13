@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; placeholder = "abcdefghijklmn83362e3c6a05375504"; ObjectID = "aVY-qt-7A1"; */
+"aVY-qt-7A1.placeholder" = "abcdefghijklmn83362e3c6a05375504";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "qky-bZ-lgv"; */
+"qky-bZ-lgv.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Please enter toggl api token"; ObjectID = "uOh-gY-PqV"; */
+"uOh-gY-PqV.text" = "Please enter toggl api token";
