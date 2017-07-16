@@ -332,6 +332,7 @@
 				TargetAttributes = {
 					C99B99221F15774400A0422B = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = CRX4WL6227;
 						ProvisioningStyle = Automatic;
 					};
 					C99B99361F15774400A0422B = {
@@ -346,10 +347,12 @@
 					};
 					C99B994A1F15774500A0422B = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = CRX4WL6227;
 						ProvisioningStyle = Automatic;
 					};
 					C99B99591F15774500A0422B = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = CRX4WL6227;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -607,6 +610,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = CRX4WL6227;
 				INFOPLIST_FILE = "ttt WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt.watchkitapp.watchkitextension;
@@ -623,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = CRX4WL6227;
 				INFOPLIST_FILE = "ttt WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt.watchkitapp.watchkitextension;
@@ -640,6 +645,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CRX4WL6227;
 				IBSC_MODULE = ttt_WatchKit_Extension;
 				INFOPLIST_FILE = "ttt WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt.watchkitapp;
@@ -657,6 +663,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CRX4WL6227;
 				IBSC_MODULE = ttt_WatchKit_Extension;
 				INFOPLIST_FILE = "ttt WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt.watchkitapp;
@@ -673,6 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CRX4WL6227;
 				INFOPLIST_FILE = ttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt;
@@ -685,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CRX4WL6227;
 				INFOPLIST_FILE = ttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt;
