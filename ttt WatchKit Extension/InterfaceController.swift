@@ -12,13 +12,14 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
     
-    @IBOutlet var timer: WKInterfaceTimer!
+    @IBOutlet var myTimer: WKInterfaceTimer!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        timer.start()
+        myTimer.setDate(Date())
+        myTimer.start()
     }
     
     override func willActivate() {
