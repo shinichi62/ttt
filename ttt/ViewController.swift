@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.object(forKey: "api_token") != nil {
+            print(UserDefaults.standard.string(forKey: "api_token")!)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -24,6 +27,7 @@ class ViewController: UIViewController {
 
     @IBAction func tapSaveButton(_ sender: Any) {
         print("tap save button!" + tokenField.text!)
+        UserDefaults.standard.set(tokenField.text!, forKey: "api_token")
     }
 
 }
