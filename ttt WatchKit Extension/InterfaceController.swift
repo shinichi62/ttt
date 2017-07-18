@@ -18,8 +18,8 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        myTimer.setDate(Date())
         myTimer.start()
+        myTimer.setDate(Date(timeIntervalSinceNow: TimeInterval(-210)))
     }
     
     override func willActivate() {
