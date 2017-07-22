@@ -23,7 +23,6 @@
 		C99B99661F15774500A0422B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B99651F15774500A0422B /* NotificationController.swift */; };
 		C99B99681F15774500A0422B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B99671F15774500A0422B /* ComplicationController.swift */; };
 		C99B996A1F15774500A0422B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99B99691F15774500A0422B /* Assets.xcassets */; };
-		C9B437311F215A83009A7D38 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B437301F215A83009A7D38 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +82,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C9145B9B1F22E879001281A6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../carthage/Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
+		C9145B9F1F22E8C8001281A6 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = ../carthage/Carthage/Build/watchOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		C99B99231F15774400A0422B /* ttt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ttt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99B99261F15774400A0422B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C99B99281F15774400A0422B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9B437311F215A83009A7D38 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +235,8 @@
 		C9B4372F1F215A83009A7D38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9145B9F1F22E8C8001281A6 /* Alamofire.framework.dSYM */,
+				C9145B9B1F22E879001281A6 /* Alamofire.framework */,
 				C9B437301F215A83009A7D38 /* Alamofire.framework */,
 			);
 			name = Frameworks;
