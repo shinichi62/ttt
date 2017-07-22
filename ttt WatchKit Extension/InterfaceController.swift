@@ -18,13 +18,19 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        // Get api token
+        var apiToken = ""
+        if UserDefaults.standard.object(forKey: "api_token") != nil {
+            apiToken = UserDefaults.standard.string(forKey: "api_token")!
+        }
+
         // Configure interface objects here.
         myTimer.start()
         myTimer.setDate(Date(timeIntervalSinceNow: TimeInterval(-210)))
 
         // Get running time entry
         Alamofire.request("https://www.toggl.com/api/v8/time_entries/current")
-            .authenticate(user: tokenxxx, password: api_token )
+            .authenticate(user: apiToken, password: "api_token" )
             .responseJSON { response in
                 print("Request: \(String(describing: response.request))")   // original url request
                 print("Response: \(String(describing: response.response))") // http url response
