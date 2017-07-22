@@ -82,8 +82,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C9145B9B1F22E879001281A6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../carthage/Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
-		C9145B9F1F22E8C8001281A6 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = ../carthage/Carthage/Build/watchOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		C99B99231F15774400A0422B /* ttt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ttt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99B99261F15774400A0422B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C99B99281F15774400A0422B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		C99B99671F15774500A0422B /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		C99B99691F15774500A0422B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C99B996B1F15774500A0422B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9B437301F215A83009A7D38 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../carthage/Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +150,6 @@
 				C99B994F1F15774500A0422B /* ttt WatchKit App */,
 				C99B995E1F15774500A0422B /* ttt WatchKit Extension */,
 				C99B99241F15774400A0422B /* Products */,
-				C9B4372F1F215A83009A7D38 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,16 +226,6 @@
 				C99B99601F15774500A0422B /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C9B4372F1F215A83009A7D38 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9145B9F1F22E8C8001281A6 /* Alamofire.framework.dSYM */,
-				C9145B9B1F22E879001281A6 /* Alamofire.framework */,
-				C9B437301F215A83009A7D38 /* Alamofire.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
