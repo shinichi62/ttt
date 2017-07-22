@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C95DC0C31F24122F00AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C21F24122F00AAB682 /* Alamofire.framework */; };
+		C95DC0C51F24126E00AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; };
 		C99B99271F15774400A0422B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B99261F15774400A0422B /* AppDelegate.swift */; };
 		C99B99291F15774400A0422B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B99281F15774400A0422B /* ViewController.swift */; };
 		C99B992C1F15774400A0422B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99B992A1F15774400A0422B /* Main.storyboard */; };
@@ -82,6 +84,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C95DC0C21F24122F00AAB682 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		C95DC0C41F24126E00AAB682 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		C99B99231F15774400A0422B /* ttt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ttt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99B99261F15774400A0422B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C99B99281F15774400A0422B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95DC0C31F24122F00AAB682 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,12 +140,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95DC0C51F24126E00AAB682 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C95DC0C11F24122F00AAB682 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C95DC0C41F24126E00AAB682 /* Alamofire.framework */,
+				C95DC0C21F24122F00AAB682 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C99B991A1F15774400A0422B = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +165,7 @@
 				C99B994F1F15774500A0422B /* ttt WatchKit App */,
 				C99B995E1F15774500A0422B /* ttt WatchKit Extension */,
 				C99B99241F15774400A0422B /* Products */,
+				C95DC0C11F24122F00AAB682 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -611,6 +627,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				DEVELOPMENT_TEAM = CRX4WL6227;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = "ttt WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt.watchkitapp.watchkitextension;
@@ -628,6 +648,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				DEVELOPMENT_TEAM = CRX4WL6227;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = "ttt WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt.watchkitapp.watchkitextension;
@@ -681,6 +705,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CRX4WL6227;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt;
@@ -694,6 +722,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CRX4WL6227;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yamaguchi.ttt;
