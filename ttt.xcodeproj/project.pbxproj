@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C95DC0C31F24122F00AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C21F24122F00AAB682 /* Alamofire.framework */; };
-		C95DC0C51F24126E00AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; };
+		C95DC0CC1F2418D900AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; };
+		C95DC0CD1F2418D900AAB682 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C99B99271F15774400A0422B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B99261F15774400A0422B /* AppDelegate.swift */; };
 		C99B99291F15774400A0422B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B99281F15774400A0422B /* ViewController.swift */; };
 		C99B992C1F15774400A0422B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99B992A1F15774400A0422B /* Main.storyboard */; };
@@ -59,6 +60,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C95DC0CE1F2418D900AAB682 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C95DC0CD1F2418D900AAB682 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C99B99711F15774500A0422B /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95DC0C51F24126E00AAB682 /* Alamofire.framework in Frameworks */,
+				C95DC0CC1F2418D900AAB682 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +338,7 @@
 				C99B99561F15774500A0422B /* Sources */,
 				C99B99571F15774500A0422B /* Frameworks */,
 				C99B99581F15774500A0422B /* Resources */,
+				C95DC0CE1F2418D900AAB682 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -630,6 +643,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "ttt WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -651,6 +665,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "ttt WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
