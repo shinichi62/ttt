@@ -44,11 +44,12 @@ class InterfaceController: WKInterfaceController {
                     let json = JSON(value)
                     print("Json: \(json["data"]["start"])")
                     
-                    let dateFormatter = ISO8601DateFormatter()
-                    let string = "2017-07-25T00:24:40+00:00"
-                    let date = dateFormatter.date(from: string)
+                    let iSO8601DateFormatter = ISO8601DateFormatter()
+                    let string = json["data"]["start"].stringValue
+                    let date = iSO8601DateFormatter.date(from: string)!
                     print(date)
                     
+                    self.myTimer.setDate(date)
                 case .failure(let error):
                     print(error)
                 }
