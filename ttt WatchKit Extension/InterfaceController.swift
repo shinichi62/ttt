@@ -43,6 +43,12 @@ class InterfaceController: WKInterfaceController {
                 case .success(let value):
                     let json = JSON(value)
                     print("Json: \(json["data"]["start"])")
+                    
+                    let dateFormatter = ISO8601DateFormatter()
+                    let string = "2017-07-25T00:24:40+00:00"
+                    let date = dateFormatter.date(from: string)
+                    print(date)
+                    
                 case .failure(let error):
                     print(error)
                 }
