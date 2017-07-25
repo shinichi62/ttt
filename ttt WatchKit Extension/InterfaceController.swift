@@ -39,18 +39,12 @@ class InterfaceController: WKInterfaceController {
         // Get running time entry
         Alamofire.request("https://www.toggl.com/api/v8/time_entries/current", headers: headers)
             .responseJSON { response in
-                print(response.timeline)
-                print("Request: \(String(describing: response.request))")   // original url request
-                print("Response: \(String(describing: response.response))") // http url response
-                print("Result: \(response.result)")                         // response serialization result
-                
-                if let object = response.result.value {
-                    let json = JSON(object)
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
                     print("Json: \(json["data"]["start"])")
-                }
-                
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                case .failure(let error):
+                    print(error)
                 }
         }
     }
