@@ -9,7 +9,7 @@
 import WatchKit
 import Foundation
 import Alamofire
-
+import SwiftyJSON
 
 class InterfaceController: WKInterfaceController {
     
@@ -44,8 +44,9 @@ class InterfaceController: WKInterfaceController {
                 print("Response: \(String(describing: response.response))") // http url response
                 print("Result: \(response.result)")                         // response serialization result
                 
-                if let json = response.result.value {
-                    print("JSON: \(json)") // serialized json response
+                if let object = response.result.value {
+                    let json = JSON(object)
+                    print("Json: \(json["data"]["start"])")
                 }
                 
                 if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
