@@ -14,9 +14,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ttt_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <timer alignment="left" enabled="YES" id="JHf-D0-BJ4">
-                            <calendarUnit key="units" day="YES" hour="YES" minute="YES" second="YES"/>
-                        </timer>
+                        <timer alignment="left" enabled="YES" id="JHf-D0-BJ4"/>
                     </items>
                     <connections>
                         <outlet property="myTimer" destination="JHf-D0-BJ4" id="tcJ-DB-Cud"/>
