@@ -19,8 +19,6 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        myTimer.start()
-        myTimer.setDate(Date(timeIntervalSinceNow: TimeInterval(-210)))
     }
     
     override func willActivate() {
@@ -43,12 +41,16 @@ class InterfaceController: WKInterfaceController {
                 case .success(let value):
                     let json = JSON(value)
                     print("Json: \(json["data"]["start"])")
+                    if json["data"]["start"].stringValue == "" {
+                        return
+                    }
                     
                     let iSO8601DateFormatter = ISO8601DateFormatter()
                     let string = json["data"]["start"].stringValue
                     let date = iSO8601DateFormatter.date(from: string)!
                     print(date)
                     
+                    self.myTimer.start()
                     self.myTimer.setDate(date)
                 case .failure(let error):
                     print(error)
