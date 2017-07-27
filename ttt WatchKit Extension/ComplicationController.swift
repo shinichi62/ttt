@@ -33,7 +33,15 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
-        handler(nil)
+        
+        var template: CLKComplicationTemplate?
+        let modularSmallTemp = CLKComplicationTemplateModularSmallSimpleText()
+        modularSmallTemp.textProvider = CLKSimpleTextProvider(text: "Test")
+        template = modularSmallTemp
+        let timelineEntry = CLKComplicationTimelineEntry(date: NSDate() as Date, complicationTemplate: template!)
+        
+        
+        handler(timelineEntry)
     }
     
     func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
@@ -50,7 +58,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         // This method will be called once per supported complication, and the results will be cached
-        handler(nil)
+        
+        var template: CLKComplicationTemplate?
+        let modularSmallTemp = CLKComplicationTemplateModularSmallSimpleText()
+        modularSmallTemp.textProvider = CLKSimpleTextProvider(text: "Test")
+        template = modularSmallTemp
+        
+        
+        handler(template)
     }
 
 }
