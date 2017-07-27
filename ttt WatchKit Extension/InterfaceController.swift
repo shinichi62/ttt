@@ -42,7 +42,7 @@ class InterfaceController: WKInterfaceController {
                     // get start time
                     let json = JSON(value)
                     let start_date = json["data"]["start"].stringValue
-                    if start_date == "" {
+                    if start_date.isEmpty() {
                         return
                     }
 
