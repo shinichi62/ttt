@@ -39,21 +39,23 @@ class InterfaceController: WKInterfaceController {
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
+                    // get start time
                     let json = JSON(value)
-                    print("Json: \(json["data"]["start"])")
-                    if json["data"]["start"].stringValue == "" {
+                    let start_date = json["data"]["start"].stringValue
+                    if start_date == "" {
                         return
                     }
-                    
+
+                    // convert string to date
                     let iSO8601DateFormatter = ISO8601DateFormatter()
-                    let string = json["data"]["start"].stringValue
-                    let date = iSO8601DateFormatter.date(from: string)!
-                    print(date)
-                    
+                    let date = iSO8601DateFormatter.date(from: start_date)!
+
+                    // set start time
                     self.myTimer.start()
                     self.myTimer.setDate(date)
                 case .failure(let error):
                     print(error)
+                    return
                 }
         }
     }
