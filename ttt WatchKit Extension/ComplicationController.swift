@@ -33,15 +33,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
-        
-        var template: CLKComplicationTemplate?
-        let modularSmallTemp = CLKComplicationTemplateModularSmallSimpleText()
-        modularSmallTemp.textProvider = CLKSimpleTextProvider(text: "Test")
-        template = modularSmallTemp
-        let timelineEntry = CLKComplicationTimelineEntry(date: NSDate() as Date, complicationTemplate: template!)
-        
-        
-        handler(timelineEntry)
+        let template = CLKComplicationTemplateModularSmallStackText()
+        template.line1TextProvider = CLKSimpleTextProvider(text: "toggl")
+        template.line2TextProvider = CLKRelativeDateTextProvider(date: Date(), style: .timer, units: [.hour, .minute, .second])
+        handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
     }
     
     func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
@@ -59,12 +54,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         // This method will be called once per supported complication, and the results will be cached
         
-        var template: CLKComplicationTemplate?
-        let modularSmallTemp = CLKComplicationTemplateModularSmallSimpleText()
-        modularSmallTemp.textProvider = CLKSimpleTextProvider(text: "Test")
-        template = modularSmallTemp
-        
-        
+        print("YOU ARE IN MODULAR SMALL")
+        let template = CLKComplicationTemplateModularSmallStackText()
+        template.line1TextProvider = CLKSimpleTextProvider(text: "toggl")
+        template.line2TextProvider = CLKRelativeDateTextProvider(date: Date(), style: .timer, units: [.hour, .minute, .second])
         handler(template)
     }
 
