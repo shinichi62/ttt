@@ -17,6 +17,8 @@
                         <timer alignment="center" verticalAlignment="center" enabled="YES" id="JHf-D0-BJ4">
                             <fontDescription key="font" type="system" pointSize="35"/>
                         </timer>
+                        <group width="1" height="10" alignment="left" verticalAlignment="center" id="kDX-50-FKQ"/>
+                        <button alignment="center" verticalAlignment="center" title="Start / Stop" id="gCd-c5-msm"/>
                     </items>
                     <connections>
                         <outlet property="myTimer" destination="JHf-D0-BJ4" id="tcJ-DB-Cud"/>
