@@ -43,6 +43,9 @@ class InterfaceController: WKInterfaceController {
                     let json = JSON(value)
                     let start_date = json["data"]["start"].stringValue
                     if start_date.isEmpty {
+                        self.myTimer.stop()
+                        UserDefaults.standard.set("", forKey: "start_date")
+                        self.updateComplication()
                         return
                     }
 
@@ -56,9 +59,7 @@ class InterfaceController: WKInterfaceController {
                     
                     // Update complication
                     UserDefaults.standard.set(date, forKey: "start_date")
-                    for complication in CLKComplicationServer.sharedInstance().activeComplications! {
-                        CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
-                    }
+                    self.updateComplication()
                 case .failure(let error):
                     print(error)
                     return
@@ -69,5 +70,12 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    
+    func updateComplication() {
+        // Update complication
+        for complication in CLKComplicationServer.sharedInstance().activeComplications! {
+            CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
+        }
     }
 }

@@ -34,7 +34,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
         var set_date = Date()
-        if let start_date = UserDefaults.standard.object(forKey: "start_date") {
+        let start_date = UserDefaults.standard.object(forKey: "start_date")
+        if start_date is Date {
             set_date = start_date as! Date
         }
 
