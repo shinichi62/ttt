@@ -18,6 +18,7 @@ class InterfaceController: WKInterfaceController {
 
     let user = "xxxxx"
     var isStart = false
+    var timeEntryId = ""
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -45,6 +46,7 @@ class InterfaceController: WKInterfaceController {
                     // Get start time
                     let json = JSON(value)
                     let start_date = json["data"]["start"].stringValue
+                    self.timeEntryId = json["data"]["id"].stringValue
                     if start_date.isEmpty {
                         // Stop timer
                         self.myTimer.stop()
@@ -83,16 +85,18 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
-    func updateComplication() {
-        // Update complication
-        for complication in CLKComplicationServer.sharedInstance().activeComplications! {
-            CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
-        }
-    }
-
     @IBAction func touchMyButton() {
         print("Touch")
         
+        if isStart {
+            self.stopTimeEntry()
+        } else {
+            self.startTimeEntry()
+        }
+        
+    }
+    
+    func startTimeEntry() {
         let password = "api_token"
         
         let parameters: Parameters = [
@@ -119,6 +123,7 @@ class InterfaceController: WKInterfaceController {
                     // Get start time
                     let json = JSON(value)
                     let start_date = json["data"]["start"].stringValue
+                    self.timeEntryId = json["data"]["id"].stringValue
                     if start_date.isEmpty {
                         // Stop timer
                         self.myTimer.stop()
@@ -131,7 +136,7 @@ class InterfaceController: WKInterfaceController {
                     }
                     
                     self.isStart = true
-
+                    
                     self.myButton.setTitle("Stop")
                     
                     // Convert string to date
@@ -150,7 +155,52 @@ class InterfaceController: WKInterfaceController {
                     return
                 }
         }
+    }
+    
+    func stopTimeEntry() {
+        let password = "api_token"
         
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        // Stop a time entry
+        Alamofire.request("https://www.toggl.com/api/v8/time_entries/"+self.timeEntryId+"/stop", method: .put, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                print("Result: \(response.result)")
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                }
+                switch response.result {
+                case .success(let value):
+                    // Get start time
+                    let json = JSON(value)
+                    let startDate = json["data"]["start"].stringValue
+                    self.timeEntryId = json["data"]["id"].stringValue
+
+                    // Stop timer
+                    self.myTimer.stop()
+                    self.myTimer.setDate(Date())
+                    UserDefaults.standard.set("", forKey: "start_date")
+                    self.updateComplication()
+                    self.isStart = false
+                    self.myButton.setTitle("Start")
+                    return
+
+                case .failure(let error):
+                    print(error)
+                    return
+                }
+        }
+    }
+    
+    func updateComplication() {
+        // Update complication
+        for complication in CLKComplicationServer.sharedInstance().activeComplications! {
+            CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
+        }
     }
     
 }
