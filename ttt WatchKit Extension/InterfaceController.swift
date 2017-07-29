@@ -14,7 +14,6 @@ import SwiftyJSON
 class InterfaceController: WKInterfaceController {
     
     @IBOutlet var myTimer: WKInterfaceTimer!
-    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -80,4 +79,9 @@ class InterfaceController: WKInterfaceController {
             CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
         }
     }
+
+    @IBAction func touchButton() {
+        print("Touch")
+    }
+    
 }
