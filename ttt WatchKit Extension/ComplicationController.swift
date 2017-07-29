@@ -39,7 +39,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
         // Set template line1
         let template = CLKComplicationTemplateModularSmallStackText()
-        template.line1TextProvider = CLKSimpleTextProvider(text: "toggl")
+        template.line1TextProvider = CLKSimpleTextProvider(text: "Time")
 
         // Set template line2
         if start_date is Date {

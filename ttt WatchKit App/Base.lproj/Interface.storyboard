@@ -15,10 +15,13 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ttt_WatchKit_App" customModuleProvider="target">
                     <items>
                         <timer alignment="center" verticalAlignment="center" enabled="YES" id="JHf-D0-BJ4">
-                            <fontDescription key="font" type="system" pointSize="35"/>
+                            <fontDescription key="font" type="system" pointSize="42"/>
                         </timer>
-                        <group width="1" height="10" alignment="left" verticalAlignment="center" id="kDX-50-FKQ"/>
-                        <button alignment="center" verticalAlignment="center" title="START / STOP" id="gCd-c5-msm"/>
+                        <group width="1" height="20" alignment="center" verticalAlignment="center" id="zdI-le-K8h"/>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Start" id="gCd-c5-msm">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="font" type="system" pointSize="15"/>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="myTimer" destination="JHf-D0-BJ4" id="tcJ-DB-Cud"/>
