@@ -39,20 +39,25 @@ class InterfaceController: WKInterfaceController {
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    // get start time
+                    // Get start time
                     let json = JSON(value)
                     let start_date = json["data"]["start"].stringValue
                     if start_date.isEmpty {
                         return
                     }
 
-                    // convert string to date
+                    // Convert string to date
                     let iSO8601DateFormatter = ISO8601DateFormatter()
                     let date = iSO8601DateFormatter.date(from: start_date)!
 
-                    // set start time
+                    // Set start time
                     self.myTimer.start()
                     self.myTimer.setDate(date)
+                    
+                    // Update complication
+                    for complication in CLKComplicationServer.sharedInstance().activeComplications! {
+                        CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
+                    }
                 case .failure(let error):
                     print(error)
                     return
