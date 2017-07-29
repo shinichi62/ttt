@@ -14,6 +14,9 @@ import SwiftyJSON
 class InterfaceController: WKInterfaceController {
     
     @IBOutlet var myTimer: WKInterfaceTimer!
+
+    let user = "xxxxx"
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -24,7 +27,6 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
 
-        let user = "xxxxx"
         let password = "api_token"
         
         var headers: HTTPHeaders = [:]
@@ -82,6 +84,59 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func touchButton() {
         print("Touch")
+        
+        let password = "api_token"
+        
+        let parameters: Parameters = [
+            "time_entry": [
+                "created_with": "test"
+            ]
+        ]
+        
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        // Get running time entry
+        Alamofire.request("https://www.toggl.com/api/v8/time_entries/start", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                print("Result: \(response.result)")
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                }
+                switch response.result {
+                case .success(let value):
+                    // Get start time
+                    let json = JSON(value)
+                    let start_date = json["data"]["start"].stringValue
+                    if start_date.isEmpty {
+                        // Stop timer
+                        self.myTimer.stop()
+                        self.myTimer.setDate(Date())
+                        UserDefaults.standard.set("", forKey: "start_date")
+                        self.updateComplication()
+                        return
+                    }
+                    
+                    // Convert string to date
+                    let iSO8601DateFormatter = ISO8601DateFormatter()
+                    let date = iSO8601DateFormatter.date(from: start_date)!
+                    
+                    // Set start time
+                    self.myTimer.start()
+                    self.myTimer.setDate(date)
+                    
+                    // Update complication
+                    UserDefaults.standard.set(date, forKey: "start_date")
+                    self.updateComplication()
+                case .failure(let error):
+                    print(error)
+                    return
+                }
+        }
+        
     }
     
 }
