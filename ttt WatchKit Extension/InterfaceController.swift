@@ -55,6 +55,7 @@ class InterfaceController: WKInterfaceController {
                     self.myTimer.setDate(date)
                     
                     // Update complication
+                    UserDefaults.standard.set(date, forKey: "start_date")
                     for complication in CLKComplicationServer.sharedInstance().activeComplications! {
                         CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
                     }
