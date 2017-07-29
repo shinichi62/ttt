@@ -33,15 +33,21 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
-        var set_date = Date()
+        
+        // Get start time
         let start_date = UserDefaults.standard.object(forKey: "start_date")
-        if start_date is Date {
-            set_date = start_date as! Date
-        }
 
+        // Set template line1
         let template = CLKComplicationTemplateModularSmallStackText()
         template.line1TextProvider = CLKSimpleTextProvider(text: "toggl")
-        template.line2TextProvider = CLKRelativeDateTextProvider(date: set_date, style: .timer, units: [.hour, .minute, .second])
+
+        // Set template line2
+        if start_date is Date {
+            template.line2TextProvider = CLKRelativeDateTextProvider(date: start_date as! Date, style: .timer, units: [.hour, .minute, .second])
+        } else {
+            template.line2TextProvider = CLKSimpleTextProvider(text: "-")
+        }
+
         handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
     }
     

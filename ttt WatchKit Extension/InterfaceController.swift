@@ -43,7 +43,9 @@ class InterfaceController: WKInterfaceController {
                     let json = JSON(value)
                     let start_date = json["data"]["start"].stringValue
                     if start_date.isEmpty {
+                        // Stop timer
                         self.myTimer.stop()
+                        self.myTimer.setDate(Date())
                         UserDefaults.standard.set("", forKey: "start_date")
                         self.updateComplication()
                         return
