@@ -22,11 +22,12 @@
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="font" type="system" pointSize="15"/>
                             <connections>
-                                <action selector="touchButton" destination="AgC-eL-Hgc" id="G7z-JL-pJ2"/>
+                                <action selector="touchMyButton" destination="AgC-eL-Hgc" id="prM-dy-8zG"/>
                             </connections>
                         </button>
                     </items>
                     <connections>
+                        <outlet property="myButton" destination="gCd-c5-msm" id="syb-4E-rBG"/>
                         <outlet property="myTimer" destination="JHf-D0-BJ4" id="tcJ-DB-Cud"/>
                     </connections>
                 </controller>

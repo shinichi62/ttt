@@ -14,8 +14,10 @@ import SwiftyJSON
 class InterfaceController: WKInterfaceController {
     
     @IBOutlet var myTimer: WKInterfaceTimer!
+    @IBOutlet var myButton: WKInterfaceButton!
 
     let user = "xxxxx"
+    var isStart = false
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -49,9 +51,15 @@ class InterfaceController: WKInterfaceController {
                         self.myTimer.setDate(Date())
                         UserDefaults.standard.set("", forKey: "start_date")
                         self.updateComplication()
+                        self.isStart = false
+                        self.myButton.setTitle("Start")
                         return
                     }
+                    
+                    self.isStart = true
 
+                    self.myButton.setTitle("Stop")
+                    
                     // Convert string to date
                     let iSO8601DateFormatter = ISO8601DateFormatter()
                     let date = iSO8601DateFormatter.date(from: start_date)!
@@ -82,7 +90,7 @@ class InterfaceController: WKInterfaceController {
         }
     }
 
-    @IBAction func touchButton() {
+    @IBAction func touchMyButton() {
         print("Touch")
         
         let password = "api_token"
@@ -99,7 +107,7 @@ class InterfaceController: WKInterfaceController {
             headers[authorizationHeader.key] = authorizationHeader.value
         }
         
-        // Get running time entry
+        // Start a time entry
         Alamofire.request("https://www.toggl.com/api/v8/time_entries/start", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 print("Result: \(response.result)")
@@ -117,8 +125,14 @@ class InterfaceController: WKInterfaceController {
                         self.myTimer.setDate(Date())
                         UserDefaults.standard.set("", forKey: "start_date")
                         self.updateComplication()
+                        self.isStart = false
+                        self.myButton.setTitle("Start")
                         return
                     }
+                    
+                    self.isStart = true
+
+                    self.myButton.setTitle("Stop")
                     
                     // Convert string to date
                     let iSO8601DateFormatter = ISO8601DateFormatter()
