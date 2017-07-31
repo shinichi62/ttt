@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9328B151F2F5AE2000FFE58 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9328B141F2F5AE2000FFE58 /* Login.storyboard */; };
 		C95DC0CC1F2418D900AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; };
 		C95DC0CD1F2418D900AAB682 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C95DC0D01F26C04200AAB682 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0CF1F26C04200AAB682 /* SwiftyJSON.framework */; };
@@ -114,6 +115,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C9328B141F2F5AE2000FFE58 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C95DC0C21F24122F00AAB682 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C95DC0C41F24126E00AAB682 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		C95DC0CF1F26C04200AAB682 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				C99B992D1F15774400A0422B /* Assets.xcassets */,
 				C99B992F1F15774400A0422B /* LaunchScreen.storyboard */,
 				C99B99321F15774400A0422B /* Info.plist */,
+				C9328B141F2F5AE2000FFE58 /* Login.storyboard */,
 			);
 			path = ttt;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9328B151F2F5AE2000FFE58 /* Login.storyboard in Resources */,
 				C99B99311F15774400A0422B /* LaunchScreen.storyboard in Resources */,
 				C99B992E1F15774400A0422B /* Assets.xcassets in Resources */,
 				C99B992C1F15774400A0422B /* Main.storyboard in Resources */,
