@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "c4222ece8dfbd8d6b0bd77f5df46cb80e7ef36d03459cc2688a3c53f16022707",
+      "name" : "Material"
+    }
+  ],
+  "commitish" : "2.8.1",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}
