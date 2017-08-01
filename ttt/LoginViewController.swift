@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     
 }
 
-extension ViewController {
+extension LoginViewController {
     fileprivate func prepareEmailField() {
         emailField = ErrorTextField()
         emailField.placeholder = "Email"
@@ -66,18 +66,21 @@ extension ViewController {
 //        emailField.textInset = 20
 
         let leftView = UIImageView()
-        leftView.image = Icon.cm.audio
+        leftView.image = Icon.email
         emailField.leftView = leftView
 
         view.layout(emailField).center(offsetY: -passwordField.height - 60).left(20).right(20)
     }
 
-    fileprivate func preparePasswordField() {
+    func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
         passwordField.detail = "At least 8 characters"
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
+
+        let leftView = UIImageView()
+        passwordField.leftView = leftView
 
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)

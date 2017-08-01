@@ -18,11 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Set login storyboard
+        //self.window = UIWindow(frame: UIScreen.main.bounds)
+        //let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        //let viewController = storyboard.instantiateViewController(withIdentifier: "Login")
+        //self.window?.rootViewController = viewController
+        //self.window?.makeKeyAndVisible()
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Login")
-        self.window?.rootViewController = viewController
-        self.window?.makeKeyAndVisible()
+        self.window!.rootViewController = LoginViewController()
+        self.window!.makeKeyAndVisible()
         
         return true
     }
