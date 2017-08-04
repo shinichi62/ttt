@@ -32,14 +32,17 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension LoginViewController {
     /// Prepares the resign responder button.
     fileprivate func prepareResignResponderButton() {
-        let btn = RaisedButton(title: "Resign", titleColor: Color.blue.base)
+        let btn = RaisedButton(title: "Login", titleColor: Color.blue.base)
         btn.addTarget(self, action: #selector(handleResignResponderButton(button:)), for: .touchUpInside)
-
-        view.layout(btn).width(100).height(constant).top(40).right(20)
+        
+        view.layout(btn).height(40).center(offsetY: -passwordField.height + 120).left(20).right(20)
     }
-
+    
     /// Handle the resign responder button.
     @objc
     internal func handleResignResponderButton(button: UIButton) {
@@ -47,40 +50,23 @@ class LoginViewController: UIViewController {
         passwordField?.resignFirstResponder()
     }
     
-}
-
-extension LoginViewController {
     fileprivate func prepareEmailField() {
         emailField = ErrorTextField()
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
+        emailField.detail = ""
         emailField.isClearIconButtonEnabled = true
         emailField.delegate = self
-
-        // Set the colors for the emailField, different from the defaults.
-//        emailField.placeholderNormalColor = Color.amber.darken4
-//        emailField.placeholderActiveColor = Color.pink.base
-//        emailField.dividerNormalColor = Color.cyan.base
-//        emailField.dividerActiveColor = Color.green.base
-        // Set the text inset
-//        emailField.textInset = 20
-
-        let leftView = UIImageView()
-        leftView.image = Icon.email
-        emailField.leftView = leftView
-
+        emailField.isErrorRevealed = true
         view.layout(emailField).center(offsetY: -passwordField.height - 60).left(20).right(20)
     }
 
     func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
-        passwordField.detail = "At least 8 characters"
+        passwordField.detail = ""
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
-
-        let leftView = UIImageView()
-        passwordField.leftView = leftView
 
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
