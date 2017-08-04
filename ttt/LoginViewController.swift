@@ -48,6 +48,8 @@ extension LoginViewController {
     internal func handleResignResponderButton(button: UIButton) {
         emailField?.resignFirstResponder()
         passwordField?.resignFirstResponder()
+        print(emailField.text ?? "")
+        print(passwordField.text ?? "")
     }
     
     fileprivate func prepareEmailField() {
