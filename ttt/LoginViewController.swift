@@ -8,6 +8,8 @@
 
 import UIKit
 import Material
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
@@ -48,8 +50,40 @@ extension LoginViewController {
     internal func handleResignResponderButton(button: UIButton) {
         emailField?.resignFirstResponder()
         passwordField?.resignFirstResponder()
-        print(emailField.text ?? "")
-        print(passwordField.text ?? "")
+
+        
+        let user = emailField.text!
+        let password = passwordField.text!
+
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        // Get running time entry
+        Alamofire.request("https://www.toggl.com/api/v8/me", headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    
+                    // Get start time
+                    let json = JSON(value)
+                    let api_token = json["data"]["api_token"].stringValue
+                    UserDefaults.standard.set(api_token, forKey: "api_token")
+
+                    print(value)
+                case .failure(let error):
+                    print(error)
+                    return
+                }
+        }
+
+        
+        
+        
+        
+        
     }
     
     fileprivate func prepareEmailField() {
