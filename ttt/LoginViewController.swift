@@ -10,6 +10,8 @@ import UIKit
 import Material
 import Alamofire
 import SwiftyJSON
+import WatchConnectivity
+
 
 class LoginViewController: UIViewController {
     
@@ -27,6 +29,13 @@ class LoginViewController: UIViewController {
         preparePasswordField()
         prepareEmailField()
         prepareResignResponderButton()
+        
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.default()
+            session.delegate = self as? WCSessionDelegate
+            session.activate()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,12 +76,22 @@ extension LoginViewController {
                 switch response.result {
                 case .success(let value):
                     
+                    print(value)
+
                     // Get start time
                     let json = JSON(value)
                     let api_token = json["data"]["api_token"].stringValue
                     UserDefaults.standard.set(api_token, forKey: "api_token")
+                    
+                    do {
+                        let applicationDict = ["hoge" : "huga"]
+                        try WCSession.default().updateApplicationContext(applicationDict)
+                        print(applicationDict)
+                    } catch {
+                        // エラー処理
+                        print("session error")
+                    }
 
-                    print(value)
                 case .failure(let error):
                     print(error)
                     return

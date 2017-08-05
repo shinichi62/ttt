@@ -10,6 +10,8 @@ import WatchKit
 import Foundation
 import Alamofire
 import SwiftyJSON
+import WatchConnectivity
+
 
 class InterfaceController: WKInterfaceController {
     
@@ -24,11 +26,28 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.default()
+            session.delegate = self as? WCSessionDelegate
+            session.activate()
+        }
+    }
+    
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        // 処理
+        print(AnyObject.self)
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        if UserDefaults.standard.object(forKey: "api_token") != nil {
+            print(UserDefaults.standard.string(forKey: "api_token")!)
+        } else {
+            print("no api token")
+        }
 
         let password = "api_token"
         
