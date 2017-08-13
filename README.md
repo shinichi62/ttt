@@ -1,2 +1,2 @@
 # ttt
-Touch time for toggl
+Watch timer for toggl
