@@ -13,7 +13,14 @@ import SwiftyJSON
 import WatchConnectivity
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
+
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("session xxx")
+        print("receive::\(activationState)")
+    }
     
     @IBOutlet var myTimer: WKInterfaceTimer!
     @IBOutlet var myButton: WKInterfaceButton!
@@ -37,6 +44,13 @@ class InterfaceController: WKInterfaceController {
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         // 処理
         print(AnyObject.self)
+        print("session watch")
+    }
+    
+    func session(_ session: WCSession,
+                 didReceiveApplicationContext applicationContext: [String : Any]){
+        
+        print("session watch2")
     }
     
     override func willActivate() {

@@ -35,6 +35,14 @@ class LoginViewController: UIViewController {
             let session = WCSession.default()
             session.delegate = self as? WCSessionDelegate
             session.activate()
+            
+            
+            let sendMessage = ["body":"sendApplicationContext"] //送信したいデータを設定
+            do {
+                try session.updateApplicationContext(sendMessage)
+            } catch {
+                print("error")
+            }
         }
     }
     
