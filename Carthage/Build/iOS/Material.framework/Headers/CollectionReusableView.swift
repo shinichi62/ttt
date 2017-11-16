@@ -29,6 +29,7 @@
  */
 
 import UIKit
+import Motion
 
 @objc(CollectionReusableView)
 open class CollectionReusableView: UICollectionReusableView, Pulseable, PulseableLayer {
@@ -317,6 +318,6 @@ extension CollectionReusableView {
     /// Manages the layout for the visualLayer property.
     fileprivate func layoutVisualLayer() {
         visualLayer.frame = bounds
-        visualLayer.cornerRadius = cornerRadius
+        visualLayer.cornerRadius = layer.cornerRadius
     }
 }

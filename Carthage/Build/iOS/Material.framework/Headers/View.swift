@@ -32,7 +32,7 @@ import UIKit
 
 open class View: UIView {
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: width, height: height)
+        return bounds.size
     }
     
     /**
@@ -159,7 +159,6 @@ open class View: UIView {
     /// Convenience initializer.
     public convenience init() {
         self.init(frame: .zero)
-        prepare()
     }
 	
 	open override func layoutSubviews() {
@@ -196,6 +195,6 @@ extension View {
     /// Manages the layout for the visualLayer property.
     fileprivate func layoutVisualLayer() {
         visualLayer.frame = bounds
-        visualLayer.cornerRadius = cornerRadius
+        visualLayer.cornerRadius = layer.cornerRadius
     }
 }

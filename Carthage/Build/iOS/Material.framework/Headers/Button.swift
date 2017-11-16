@@ -29,6 +29,7 @@
  */
 
 import UIKit
+import Motion
 
 open class Button: UIButton, Pulseable, PulseableLayer {
     /**
@@ -99,7 +100,15 @@ open class Button: UIButton, Pulseable, PulseableLayer {
     open var image: UIImage? {
         didSet {
             setImage(image, for: .normal)
+            setImage(image, for: .selected)
             setImage(image, for: .highlighted)
+            setImage(image, for: .disabled)
+            
+            if #available(iOS 9, *) {
+                setImage(image, for: .application)
+                setImage(image, for: .focused)
+                setImage(image, for: .reserved)
+            }
         }
     }
     
@@ -108,7 +117,15 @@ open class Button: UIButton, Pulseable, PulseableLayer {
     open var title: String? {
         didSet {
             setTitle(title, for: .normal)
+            setTitle(title, for: .selected)
             setTitle(title, for: .highlighted)
+            setTitle(title, for: .disabled)
+            
+            if #available(iOS 9, *) {
+                setTitle(title, for: .application)
+                setTitle(title, for: .focused)
+                setTitle(title, for: .reserved)
+            }
             
             guard nil != title else {
                 return
@@ -128,6 +145,25 @@ open class Button: UIButton, Pulseable, PulseableLayer {
         didSet {
             setTitleColor(titleColor, for: .normal)
             setTitleColor(titleColor, for: .highlighted)
+            setTitleColor(titleColor, for: .disabled)
+            
+            if nil == selectedTitleColor {
+                setTitleColor(titleColor, for: .selected)
+            }
+            
+            if #available(iOS 9, *) {
+                setTitleColor(titleColor, for: .application)
+                setTitleColor(titleColor, for: .focused)
+                setTitleColor(titleColor, for: .reserved)
+            }
+        }
+    }
+
+    /// Sets the selected titleColor for the button.
+    @IBInspectable
+    open var selectedTitleColor: UIColor? {
+        didSet {
+            setTitleColor(selectedTitleColor, for: .selected)
         }
     }
     
@@ -165,7 +201,6 @@ open class Button: UIButton, Pulseable, PulseableLayer {
     public convenience init(image: UIImage?, tintColor: UIColor = Color.blue.base) {
         self.init()
         prepare(with: image, tintColor: tintColor)
-        prepare()
     }
     
     /**
@@ -176,7 +211,6 @@ open class Button: UIButton, Pulseable, PulseableLayer {
     public convenience init(title: String?, titleColor: UIColor = Color.blue.base) {
         self.init()
         prepare(with: title, titleColor: titleColor)
-        prepare()
     }
 	
     open override func layoutSubviews() {
@@ -291,6 +325,6 @@ extension Button {
     /// Manages the layout for the visualLayer property.
     fileprivate func layoutVisualLayer() {
         visualLayer.frame = bounds
-        visualLayer.cornerRadius = cornerRadius
+        visualLayer.cornerRadius = layer.cornerRadius
     }
 }

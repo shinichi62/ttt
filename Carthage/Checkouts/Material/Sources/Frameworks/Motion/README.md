@@ -12,13 +12,13 @@ Take a look at a sample [Photos](https://github.com/CosmicMind/Samples/tree/mast
 
 * [Photos Sample](https://github.com/CosmicMind/Samples/tree/master/Projects/Programmatic/Photos)
 
-### Who is this for?
+### Who is Motion for?
 
 Motion is designed for beginner to expert developers. For beginners, you will be exposed to very powerful APIs that would take time and experience to develop on your own, and experts will appreciate the time saved by using Motion.
 
 ### What you will learn
 
-You will learn how to use Motion with a general introduction to fundamental concepts and easy to use code snippets. 
+You will learn how to use Motion with a general introduction to fundamental concepts and easy to use code snippets.
 
 # Transitions
 
@@ -48,7 +48,7 @@ orangeView.motionIdentifier = "bar"
 orangeView.transition(.translate(x: -100))
 ```
 
-The above code snippet tells the source views in `view controller 1` to link to the destination views in `view controller 2` using the `motionIdentifier`. Animations may be added to views during a transition using the **transition** method. The *transition* method accepts MotionTransition structs that configure the view's animation. 
+The above code snippet tells the source views in `view controller 1` to link to the destination views in `view controller 2` using the `motionIdentifier`. Animations may be added to views during a transition using the **transition** method. The *transition* method accepts MotionTransition structs that configure the view's animation.
 
 * [MotionTransition API](https://cosmicmind.gitbooks.io/motion/content/motion_transition_api.html)
 * [Code Samples](https://github.com/CosmicMind/Samples/tree/master/Projects/Programmatic/TransitionsWithIdentifier)
@@ -84,7 +84,7 @@ motionNavigationTransitionType = .autoReverse(presenting: .zoom)
 ```
 
 * [Code Samples](https://github.com/CosmicMind/Samples/tree/master/Projects/Programmatic/Transitions)
- 
+
 # Animations
 
 Motion provides the building blocks necessary to create stunning animations without much effort. Motion's animation API will make maintenance a breeze and changes even easier. To create an animation, use the **animate** method of a view or layer and pass in a list of MotionAnimation structs. MotionAnimation structs are configurable values that describe how to animate a property or group of properties.
@@ -129,11 +129,11 @@ In the above code example, a box view is created with a width of 100, height of 
 > **Embedded frameworks require a minimum deployment target of iOS 8.**
 > - [Download Motion](https://github.com/CosmicMind/Motion/archive/master.zip)
 
-Visit the [Installation](https://cosmicmind.gitbooks.io/motion/content/installation.html) page to learn how to install Motion using [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage).
+Read [Material - It's time to download](https://www.cosmicmind.com/danieldahan/lesson/6) to learn how to install Material using [GitHub](http://github.com), [CocoaPods](http://cocoapods.org), and [Carthage](https://github.com/Carthage/Carthage).
 
 ## Change Log
 
-Motion is a growing project and will encounter changes throughout its development. It is recommended that the [Change Log](https://cosmicmind.gitbooks.io/motion/content/change_log.html) be reviewed prior to updating versions.
+Motion is a growing project and will encounter changes throughout its development. It is recommended that the [Change Log](https://github.com/CosmicMind/Motion/blob/master/CHANGELOG.md) be reviewed prior to updating versions.
 
 ## License
 

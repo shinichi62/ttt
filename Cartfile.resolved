@@ -1,3 +1,4 @@
-github "Alamofire/Alamofire" "4.5.0"
-github "CosmicMind/Material" "2.8.1"
-github "SwiftyJSON/SwiftyJSON" "3.1.4"
+github "Alamofire/Alamofire" "4.5.1"
+github "CosmicMind/Material" "2.12.16"
+github "CosmicMind/Motion" "1.2.5"
+github "SwiftyJSON/SwiftyJSON" "4.0.0"

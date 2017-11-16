@@ -29,6 +29,7 @@
  */
 
 import UIKit
+import Motion
 
 @objc(GridAxisDirection)
 public enum GridAxisDirection: Int {
@@ -81,7 +82,7 @@ public struct Grid {
     internal weak var context: UIView?
     
     /// Defer the calculation.
-    public var deferred = false
+    public var isDeferred = false
     
     /// Number of rows.
     public var rows: Int {
@@ -178,18 +179,18 @@ public struct Grid {
     
     /// Begins a deferred block.
     public mutating func begin() {
-        deferred = true
+        isDeferred = true
     }
     
     /// Completes a deferred block.
     public mutating func commit() {
-        deferred = false
+        isDeferred = false
         reload()
     }
     
     /// Reload the button layout.
     public func reload() {
-        guard !deferred else {
+        guard !isDeferred else {
             return
         }
         
@@ -210,7 +211,7 @@ public struct Grid {
             return
         }
         
-        guard 0 < canvas.width && 0 < canvas.height else {
+        guard 0 < canvas.bounds.width && 0 < canvas.bounds.height else {
             return
         }
         
@@ -227,10 +228,10 @@ public struct Grid {
                 let co = v.grid.offset.columns
                 let w = (canvas.bounds.width - contentEdgeInsets.left - contentEdgeInsets.right - layoutEdgeInsets.left - layoutEdgeInsets.right + interimSpace) / CGFloat(axis.columns)
                 
-                v.x = CGFloat(i + n + co) * w + contentEdgeInsets.left + layoutEdgeInsets.left
-                v.y = contentEdgeInsets.top + layoutEdgeInsets.top
-                v.width = w * CGFloat(c) - interimSpace
-                v.height = canvas.bounds.height - contentEdgeInsets.top - contentEdgeInsets.bottom - layoutEdgeInsets.top - layoutEdgeInsets.bottom
+                v.frame.origin.x = CGFloat(i + n + co) * w + contentEdgeInsets.left + layoutEdgeInsets.left
+                v.frame.origin.y = contentEdgeInsets.top + layoutEdgeInsets.top
+                v.frame.size.width = w * CGFloat(c) - interimSpace
+                v.frame.size.height = canvas.bounds.height - contentEdgeInsets.top - contentEdgeInsets.bottom - layoutEdgeInsets.top - layoutEdgeInsets.bottom
                 
                 n += c + co - 1
                 
@@ -239,10 +240,10 @@ public struct Grid {
                 let ro = v.grid.offset.rows
                 let h = (canvas.bounds.height - contentEdgeInsets.top - contentEdgeInsets.bottom - layoutEdgeInsets.top - layoutEdgeInsets.bottom + interimSpace) / CGFloat(axis.rows)
                 
-                v.x = contentEdgeInsets.left + layoutEdgeInsets.left
-                v.y = CGFloat(i + n + ro) * h + contentEdgeInsets.top + layoutEdgeInsets.top
-                v.width = canvas.bounds.width - contentEdgeInsets.left - contentEdgeInsets.right - layoutEdgeInsets.left - layoutEdgeInsets.right
-                v.height = h * CGFloat(r) - interimSpace
+                v.frame.origin.x = contentEdgeInsets.left + layoutEdgeInsets.left
+                v.frame.origin.y = CGFloat(i + n + ro) * h + contentEdgeInsets.top + layoutEdgeInsets.top
+                v.frame.size.width = canvas.bounds.width - contentEdgeInsets.left - contentEdgeInsets.right - layoutEdgeInsets.left - layoutEdgeInsets.right
+                v.frame.size.height = h * CGFloat(r) - interimSpace
                 
                 n += r + ro - 1
                 
@@ -254,10 +255,10 @@ public struct Grid {
                 let w = (canvas.bounds.width - contentEdgeInsets.left - contentEdgeInsets.right - layoutEdgeInsets.left - layoutEdgeInsets.right + interimSpace) / CGFloat(axis.columns)
                 let h = (canvas.bounds.height - contentEdgeInsets.top - contentEdgeInsets.bottom - layoutEdgeInsets.top - layoutEdgeInsets.bottom + interimSpace) / CGFloat(axis.rows)
                 
-                v.x = CGFloat(co) * w + contentEdgeInsets.left + layoutEdgeInsets.left
-                v.y = CGFloat(ro) * h + contentEdgeInsets.top + layoutEdgeInsets.top
-                v.width = w * CGFloat(c) - interimSpace
-                v.height = h * CGFloat(r) - interimSpace
+                v.frame.origin.x = CGFloat(co) * w + contentEdgeInsets.left + layoutEdgeInsets.left
+                v.frame.origin.y = CGFloat(ro) * h + contentEdgeInsets.top + layoutEdgeInsets.top
+                v.frame.size.width = w * CGFloat(c) - interimSpace
+                v.frame.size.height = h * CGFloat(r) - interimSpace
             }
             
             i += 1
@@ -265,19 +266,18 @@ public struct Grid {
     }
 }
 
-/// A memory reference to the Grid instance for UIView extensions.
-fileprivate var GridKey: UInt8 = 0
+fileprivate var AssociatedInstanceKey: UInt8 = 0
 
 extension UIView {
     /// Grid reference.
     public var grid: Grid {
         get {
-            return AssociatedObject.get(base: self, key: &GridKey) {
+            return AssociatedObject.get(base: self, key: &AssociatedInstanceKey) {
                 return Grid(context: self)
             }
         }
         set(value) {
-            AssociatedObject.set(base: self, key: &GridKey, value: value)
+            AssociatedObject.set(base: self, key: &AssociatedInstanceKey, value: value)
         }
     }
     

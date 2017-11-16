@@ -30,6 +30,12 @@
 
 import UIKit
 
+@objc(FABMenuItemTitleLabelPosition)
+public enum FABMenuItemTitleLabelPosition: Int {
+    case left
+    case right
+}
+
 @objc(FABMenuDirection)
 public enum FABMenuDirection: Int {
     case up
@@ -41,6 +47,9 @@ public enum FABMenuDirection: Int {
 open class FABMenuItem: View {
     /// A reference to the titleLabel.
     open let titleLabel = UILabel()
+    
+    /// The titleLabel side.
+    open var titleLabelPosition = FABMenuItemTitleLabelPosition.left
     
     /// A reference to the fabButton.
     open let fabButton = FABButton()
@@ -83,10 +92,17 @@ extension FABMenuItem {
         let interimSpace = InterimSpacePresetToValue(preset: .interimSpace6)
         
         titleLabel.sizeToFit()
-        titleLabel.width += 1.5 * interimSpace
-        titleLabel.height += interimSpace / 2
-        titleLabel.y = (height - titleLabel.height) / 2
-        titleLabel.x = -titleLabel.width - interimSpace
+        titleLabel.frame.size.width += 1.5 * interimSpace
+        titleLabel.frame.size.height += interimSpace / 2
+        titleLabel.frame.origin.y = (bounds.height - titleLabel.bounds.height) / 2
+        
+        switch titleLabelPosition {
+        case .left:
+            titleLabel.frame.origin.x = -titleLabel.bounds.width - interimSpace
+        case .right:
+            titleLabel.frame.origin.x = frame.bounds.width + interimSpace
+        }
+        
         titleLabel.alpha = 0
         titleLabel.isHidden = false
         
@@ -165,6 +181,10 @@ public protocol FABMenuDelegate {
 
 @objc(FABMenu)
 open class FABMenu: View {
+    /// A flag to avoid the double tap.
+    fileprivate var shouldAvoidHitTest = false
+    
+    
     /// A reference to the SpringAnimation object.
     internal let spring = SpringAnimation()
     
@@ -211,8 +231,8 @@ open class FABMenu: View {
         }
     }
     
-    /// An internal handler for the FABButton.
-    internal var handleFABButtonCallback: ((UIButton) -> Void)?
+    /// An open handler for the FABButton.
+    open var handleFABButtonCallback: ((UIButton) -> Void)?
     
     /// An internal handler for the open function.
     internal var handleOpenCallback: (() -> Void)?
@@ -296,7 +316,9 @@ open class FABMenu: View {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        fabButton?.frame.size = bounds.size
+        fabButton?.frame = bounds
+        fabButton?.setNeedsLayout()
+        fabButton?.layoutIfNeeded()
         spring.baseSize = bounds.size
     }
     
@@ -334,7 +356,7 @@ extension FABMenu {
      - Parameter animations: An animation block to execute on each view's animation.
      - Parameter completion: A completion block to execute on each view's animation.
      */
-    internal func open(isTriggeredByUserInteraction: Bool, duration: TimeInterval = 0.15, delay: TimeInterval = 0, usingSpringWithDamping: CGFloat = 0.5, initialSpringVelocity: CGFloat = 0, options: UIViewAnimationOptions = [], animations: ((UIView) -> Void)? = nil, completion: ((UIView) -> Void)? = nil) {
+    open func open(isTriggeredByUserInteraction: Bool, duration: TimeInterval = 0.15, delay: TimeInterval = 0, usingSpringWithDamping: CGFloat = 0.5, initialSpringVelocity: CGFloat = 0, options: UIViewAnimationOptions = [], animations: ((UIView) -> Void)? = nil, completion: ((UIView) -> Void)? = nil) {
         handleOpenCallback?()
         
         if isTriggeredByUserInteraction {
@@ -383,7 +405,7 @@ extension FABMenu {
      - Parameter animations: An animation block to execute on each view's animation.
      - Parameter completion: A completion block to execute on each view's animation.
      */
-    internal func close(isTriggeredByUserInteraction: Bool, duration: TimeInterval = 0.15, delay: TimeInterval = 0, usingSpringWithDamping: CGFloat = 0.5, initialSpringVelocity: CGFloat = 0, options: UIViewAnimationOptions = [], animations: ((UIView) -> Void)? = nil, completion: ((UIView) -> Void)? = nil) {
+    open func close(isTriggeredByUserInteraction: Bool, duration: TimeInterval = 0.15, delay: TimeInterval = 0, usingSpringWithDamping: CGFloat = 0.5, initialSpringVelocity: CGFloat = 0, options: UIViewAnimationOptions = [], animations: ((UIView) -> Void)? = nil, completion: ((UIView) -> Void)? = nil) {
         handleCloseCallback?()
         
         if isTriggeredByUserInteraction {
@@ -422,7 +444,10 @@ extension FABMenu {
         for v in subviews {
             let p = v.convert(point, from: self)
             if v.bounds.contains(p) {
-                delegate?.fabMenu?(fabMenu: self, tappedAt: point, isOutside: false)
+                if !shouldAvoidHitTest {
+                    delegate?.fabMenu?(fabMenu: self, tappedAt: point, isOutside: false)
+                }
+                shouldAvoidHitTest = !shouldAvoidHitTest
                 return v.hitTest(p, with: event)
             }
         }
