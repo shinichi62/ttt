@@ -78,7 +78,6 @@ extension LoginViewController {
         let btn = RaisedButton(title: "Login", titleColor: Color.blue.base)
         btn.addTarget(self, action: #selector(handleResignResponderButton(button:)), for: .touchUpInside)
         
-        view.layout(btn).height(40).center(offsetY: -passwordField.height + 120).left(20).right(20)
     }
     
     /// Handle the resign responder button.
@@ -149,7 +148,6 @@ extension LoginViewController {
         emailField.isClearIconButtonEnabled = true
         emailField.delegate = self
         emailField.isErrorRevealed = true
-        view.layout(emailField).center(offsetY: -passwordField.height - 60).left(20).right(20)
     }
 
     func preparePasswordField() {
