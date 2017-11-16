@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C9328B171F2FE968000FFE58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9328B161F2FE968000FFE58 /* LoginViewController.swift */; };
-		C9328B191F30B75B000FFE58 /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9328B181F30B75B000FFE58 /* Material.framework */; };
-		C9328B1A1F30B75B000FFE58 /* Material.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9328B181F30B75B000FFE58 /* Material.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C95DC0CC1F2418D900AAB682 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; };
 		C95DC0CD1F2418D900AAB682 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0C41F24126E00AAB682 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C95DC0D01F26C04200AAB682 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DC0CF1F26C04200AAB682 /* SwiftyJSON.framework */; };
@@ -88,7 +85,6 @@
 			files = (
 				C98DA83C1F2A915800BD4A57 /* SwiftyJSON.framework in Embed Frameworks */,
 				C98DA83A1F2A915800BD4A57 /* Alamofire.framework in Embed Frameworks */,
-				C9328B1A1F30B75B000FFE58 /* Material.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,8 +114,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C9328B161F2FE968000FFE58 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C9328B181F30B75B000FFE58 /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = Carthage/Build/iOS/Material.framework; sourceTree = "<group>"; };
 		C95DC0C21F24122F00AAB682 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C95DC0C41F24126E00AAB682 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		C95DC0CF1F26C04200AAB682 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -159,7 +153,6 @@
 			files = (
 				C98DA83B1F2A915800BD4A57 /* SwiftyJSON.framework in Frameworks */,
 				C98DA8391F2A915800BD4A57 /* Alamofire.framework in Frameworks */,
-				C9328B191F30B75B000FFE58 /* Material.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +194,6 @@
 		C99B991A1F15774400A0422B = {
 			isa = PBXGroup;
 			children = (
-				C9328B181F30B75B000FFE58 /* Material.framework */,
 				C98DA8371F2A915800BD4A57 /* Alamofire.framework */,
 				C98DA8381F2A915800BD4A57 /* SwiftyJSON.framework */,
 				C95DC0CF1F26C04200AAB682 /* SwiftyJSON.framework */,
@@ -236,7 +228,6 @@
 				C99B992D1F15774400A0422B /* Assets.xcassets */,
 				C99B992F1F15774400A0422B /* LaunchScreen.storyboard */,
 				C99B99321F15774400A0422B /* Info.plist */,
-				C9328B161F2FE968000FFE58 /* LoginViewController.swift */,
 			);
 			path = ttt;
 			sourceTree = "<group>";
@@ -493,7 +484,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9328B171F2FE968000FFE58 /* LoginViewController.swift in Sources */,
 				C99B99291F15774400A0422B /* ViewController.swift in Sources */,
 				C99B99271F15774400A0422B /* AppDelegate.swift in Sources */,
 			);
